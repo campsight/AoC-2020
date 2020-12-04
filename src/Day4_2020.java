@@ -8,8 +8,11 @@ import java.util.List;
 public class Day4_2020 {
 
     public static void main(String[] args) throws IOException {
+        // read input
         List<String> inputLines = Files.readAllLines(Path.of("resources\\input_day204.txt"));
         Iterator<String> lineIterator = inputLines.iterator();
+
+        // create list of passports based on the input
         ArrayList<Passport> passports = new ArrayList<>();
         String ppRead = "";
         while(lineIterator.hasNext()) {
@@ -24,19 +27,19 @@ public class Day4_2020 {
             }
         }
         if (ppRead.length() > 1) passports.add(new Passport(ppRead));
-        Iterator<Passport> ppIterator = passports.iterator();
-        int validPassports = 0;
-        int fullyValidPassports = 0;
-        while (ppIterator.hasNext()) {
-            Passport nextPassport = ppIterator.next();
-            if (nextPassport.isValid()) {
+
+        // validate passports
+        int validPassports = 0; // part 1
+        int fullyValidPassports = 0; // part 2
+        for (Passport pp : passports) {
+            if (pp.isValid()) {
                 validPassports += 1;
-                if (nextPassport.isValidFull()) fullyValidPassports += 1;
+                if (pp.isValidFull()) fullyValidPassports += 1;
             }
 
         }
-        System.out.println(validPassports);
-        System.out.println(fullyValidPassports);
+        System.out.println("Part 1: " + validPassports);
+        System.out.println("Part 2: " + fullyValidPassports);
 
     }
 }
