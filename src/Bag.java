@@ -49,7 +49,7 @@ public class Bag {
         StringBuilder sb = new StringBuilder("Bag (" + color + ") contains ");
         if (isEmpty()) return sb.append(" nothing.").toString();
         Iterator<Bag> it = innerBags.iterator();
-        while (it.hasNext()) sb.append(it.next().getColor() + ", ");
+        while (it.hasNext()) sb.append(it.next().getColor()).append(", ");
         return sb.toString();
     }
 
