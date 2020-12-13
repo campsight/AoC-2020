@@ -86,9 +86,7 @@ public class Day11_2020 {
         int count = 0;
 
         while(lastIndex != -1){
-
             lastIndex = str.indexOf(findStr,lastIndex);
-
             if(lastIndex != -1){
                 count ++;
                 lastIndex += findStr.length();

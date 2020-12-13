@@ -58,15 +58,15 @@ public class Day11b_2020 {
             for (int j = 0; j < width; j++) {
                 String s = map.get(i).substring(j, j+1);
                 switch (s) {
-                    case EMPTY_SEAT:
+                    case EMPTY_SEAT -> {
                         adjSeats = getAdjacentSeats2(map, j, i);
                         if (!adjSeats.contains(OCCUPIED_SEAT)) {
                             StringBuilder sb = new StringBuilder(result.get(i));
                             sb.setCharAt(j, OCCUPIED_SEAT.charAt(0));
                             result.set(i, sb.toString());
                         }
-                        break;
-                    case OCCUPIED_SEAT:
+                    }
+                    case OCCUPIED_SEAT -> {
                         adjSeats = getAdjacentSeats2(map, j, i);
                         long nb_occ = adjSeats.stream().filter(x -> x.equals(OCCUPIED_SEAT)).count();
                         if (nb_occ >= 5) { // 4 for part 1, 5 for part 2
@@ -74,7 +74,7 @@ public class Day11b_2020 {
                             sb.setCharAt(j, EMPTY_SEAT.charAt(0));
                             result.set(i, sb.toString());
                         }
-                        break;
+                    }
                 }
             }
         }
