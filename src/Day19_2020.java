@@ -14,7 +14,7 @@ public class Day19_2020 {
 
     public static void main(String[] args) throws IOException {
         // read input
-        List<String> inputLines = Files.readAllLines(Path.of("resources\\input_day219.txt"));
+        List<String> inputLines = Files.readAllLines(Path.of("resources/input_day219.txt"));
         int endRuleIndex = inputLines.indexOf("");
 
         for (int i = 0; i < endRuleIndex; i++) {
