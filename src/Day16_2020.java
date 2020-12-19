@@ -3,6 +3,7 @@ import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class Day16_2020 {
             if (l >= 0) {
                 result += l;
             } else {
-                int[] ticket = makeTicket(inputLines.get(i).split(","));
+                int[] ticket = Arrays.stream(inputLines.get(i).split(",")).mapToInt(Integer::parseInt).toArray();;
                 tickets.add(ticket);
                 if (ticket[15] == 0) {
                     System.out.println("ERROR " + l);
@@ -59,7 +60,7 @@ public class Day16_2020 {
         } while (rulesProcessed.size() < rules.size());
 
         // let's look at our ticket
-        myTicket = makeTicket(inputLines.get(endRuleIndex+2).split(","));
+        myTicket = Arrays.stream(inputLines.get(endRuleIndex+2).split(",")).mapToInt(Integer::parseInt).toArray();
 
         // and calculate the result
         BigInteger solution = BigInteger.ONE;
@@ -124,14 +125,6 @@ public class Day16_2020 {
             if (r.isValid(number)) {
                result = true;
             }
-        }
-        return result;
-    }
-
-    private static int[] makeTicket(String[] line) {
-        int[] result = new int[line.length];
-        for (int i = 0; i < line.length; i++) {
-            result[i] = Integer.parseInt(line[i]);
         }
         return result;
     }
