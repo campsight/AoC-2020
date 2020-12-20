@@ -68,7 +68,7 @@ public class Day20_2020 {
         Puzzle puzzle = new Puzzle(tiles.size());
         puzzle.setPiece(0, 0, startTile);
         tiles.remove(startTile);
-        ArrayList<Tile> matchingTiles = new ArrayList<>();
+        ArrayList<Tile> matchingTiles;
         for (int r = 0; r < puzzle.getSize(); r++) {
             for (int c = 0; c < puzzle.getSize(); c++) {
                 if (c < (puzzle.getSize() - 1)) {
@@ -137,16 +137,13 @@ public class Day20_2020 {
             picture.rotateClockwise();
         }
 
-        //System.out.println(count);
         int resultP2 = picture.getNbHashes() - (count * monsterPos.size());
         System.out.println("Part 2: " + resultP2);
         System.out.println("Total time: " + (System.currentTimeMillis()-start));
     }
 
     public static int nbMatching(Tile t, ArrayList<Tile> tiles) {
-        int count = getMatchingTiles(t, tiles).size();
-        //System.out.println("Tile " + t.getID() + " has " + count + " matches.");
-        return count;
+        return getMatchingTiles(t, tiles).size();
     }
 
     public static ArrayList<Tile> getMatchingTiles(Tile t, ArrayList<Tile> tiles) {
