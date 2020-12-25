@@ -11,6 +11,8 @@ public class Day24_2020 {
     private static BWTile startTile;
 
     public static void main(String[] args) throws IOException {
+        long start = System.currentTimeMillis();
+
         // read input
         List<String> inputLines = Files.readAllLines(Path.of("resources/input_day224.txt"));
         //List<String> inputLines = Files.readAllLines(Path.of("resources/nele_day24.txt"));
@@ -21,8 +23,6 @@ public class Day24_2020 {
             flipTile(line);
         }
 
-        //int count = blackTileCount();
-
         System.out.println("Part 1: " + tiles.stream().filter(x -> x.getColor() == BWTile.BLACK).count());
 
         // only keep the black tiles
@@ -31,12 +31,13 @@ public class Day24_2020 {
         //System.out.println(tiles);
         for (int i = 0; i <100; i++) {
             processDay();
-            System.out.println("Day " + (i+1) + ": " + tiles.size());
+            //System.out.println("Day " + (i+1) + ": " + tiles.size());
         }
 
         System.out.println("Part 2: " + tiles.size());
 
-
+        long end = System.currentTimeMillis();
+        System.out.println("Time taken: " + (((double) (end-start))/1000) + " seconds.");
     }
 
     private static void processDay() {
@@ -139,7 +140,7 @@ public class Day24_2020 {
         }
         BWTile flipTile = getTile(previousTile, tiles);
         flipTile.flipColor();
-        System.out.println("flipped tile [" + flipTile.getRow() + ", " + flipTile.getCol() + "] to " + flipTile.getColor());
+        //System.out.println("flipped tile [" + flipTile.getRow() + ", " + flipTile.getCol() + "] to " + flipTile.getColor());
         if (flipTile.equals(previousTile)) {
             tiles.add(flipTile);
         }
